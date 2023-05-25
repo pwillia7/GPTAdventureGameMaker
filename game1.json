@@ -1,0 +1,215 @@
+{
+    "settings": {
+      "title": "Escape the Dungeon",
+      "author": "Bing",
+      "description": "A text adventure game where you have to escape from a dungeon full of traps and monsters.",
+      "font": "helvetiker_regular.typeface.json",
+      "backgroundColor": "#000000",
+      "textColor": "#ffffff"
+    },
+    "scenes": [
+      {
+        "id": "start",
+        "text": "You wake up in a dark and damp dungeon cell. You don't remember how you got here, but you know you have to escape. You see a wooden door with a rusty lock, a small window with iron bars, and a pile of straw in the corner.",
+        "choices": [
+          {
+            "text": "Examine the door.",
+            "nextScene": "door"
+          },
+          {
+            "text": "Examine the window.",
+            "nextScene": "window"
+          },
+          {
+            "text": "Examine the straw.",
+            "nextScene": "straw"
+          }
+        ],
+        "animationCode": "var geometry = new THREE.BoxGeometry(5, 5, 5); var material = new THREE.MeshBasicMaterial({color: 0xff0000}); var cube = new THREE.Mesh(geometry, material); ascene.add(cube); cube.position.set(0, 0, 0); requestAnimationFrame(function animateCube() {cube.rotation.x += .01; cube.rotation.y += 0.01; render(); requestAnimationFrame(animateCube);});"
+
+    },
+      {
+        "id": "door",
+        "text": "You approach the door and try to open it. It's locked. You look for a keyhole, but there is none. The lock seems to have some kind of mechanism that requires a combination of symbols to open.",
+        "choices": [
+          {
+            "text": "Look for clues.",
+            "nextScene": "clues"
+          },
+          {
+            "text": "Try to guess the combination.",
+            "nextScene": "guess"
+          },
+          {
+            "text": "Go back to the cell.",
+            "nextScene": "start"
+          }
+        ],
+        "animationCode": "var geometry = new THREE.BoxGeometry(5, 5, 5); var material = new THREE.MeshBasicMaterial({color: 0x00FF00}); var cube = new THREE.Mesh(geometry, material); ascene.add(cube); cube.position.set(0, 0, 0); requestAnimationFrame(function animateCube() {cube.rotation.x += .01; cube.rotation.y += 0.01; render(); requestAnimationFrame(animateCube);});"
+      },
+      {
+        "id": "window",
+        "text": "You approach the window and look outside. You see a narrow alley with a dead end. There is no sign of life or escape. The window is too small for you to fit through, and the bars are too strong to break.",
+        "choices": [
+          {
+            "text": "Look for something useful.",
+            "nextScene": "useful"
+          },
+          {
+           
+  
+  "text": "Shout for help.",
+            "nextScene": "shout"
+          },
+          {
+            "text": "Go back to the cell.",
+            "nextScene": "start"
+          }
+        ],
+        "animationCode": "var geometry = new THREE.SphereGeometry(3, 32, 32); var material = new THREE.MeshBasicMaterial({color: 0x00ff00}); var sphere = new THREE.Mesh(geometry, material); ascene.add(sphere); sphere.position.set(0, 0, 0); var scale = 1; var direction = 1; requestAnimationFrame(function animateSphere() {scale += 0.01 * direction; if (scale > 2 || scale < 0.5) {direction *= -1;} sphere.scale.set(scale, scale, scale); render(); requestAnimationFrame(animateSphere);});"
+
+      },
+      {
+        "id": "straw",
+        "text": "You approach the pile of straw and search through it. You find nothing but dust and dirt. You sneeze.",
+        "choices": [
+          {
+            "text": "Keep searching.",
+            "nextScene": "search"
+          },
+          {
+            "text": "Give up.",
+            "nextScene": "giveup"
+          },
+          {
+            "text": "Go back to the cell.",
+            "nextScene": "start"
+          }
+        ],
+        "animationCode": "var geometry = new THREE.CylinderGeometry(2, 2, 6, 32); var material = new THREE.MeshBasicMaterial({color: 0xffff00}); var cylinder = new THREE.Mesh(geometry, material); ascene.add(cylinder); cylinder.position.set(0, 0, 0); requestAnimationFrame(function animateCylinder() {cylinder.rotation.z += 0.01; render(); requestAnimationFrame(animateCylinder);});"
+
+      },
+      {
+        "id": "clues",
+        "text": "You look around the cell for clues about the combination. You notice some scratches on the wall near the door. They seem to form some kind of pattern.",
+        "choices": [
+          {
+            "text": "Try to decipher the pattern.",
+            "nextScene": "decipher"
+          },
+          {
+            "text": "Ignore it.",
+            "nextScene": "door"
+          }
+        ],
+        "animationCode": "var geometry = new THREE.TorusGeometry(4, 1, 16, 100); var material = new THREE.MeshBasicMaterial({color: 0xff00ff}); var torus = new THREE.Mesh(geometry, material); ascene.add(torus); torus.position.set(0, 0, 0); requestAnimationFrame(function animateTorus() {torus.rotation.y += 0.01; render(); requestAnimationFrame(animateTorus);});"
+
+      },
+      {
+        "id": "guess",
+        "text": "You try to guess the combination by randomly turning the symbols on the lock. You hear a loud click and then a thud. The door swings open.",
+        "choices": [
+          {
+            "text": "Go through the door.",
+            "nextScene": "end"
+          }
+        ],
+        "animationCode": "var geometry = new THREE.OctahedronGeometry(3); var material = new THREE.MeshBasicMaterial({color: 0x00ffff}); var octahedron = new THREE.Mesh(geometry, material); ascene.add(octahedron); octahedron.position.set(0, 0, 0); var y = 0; var speed = 0.1; var gravity = -0.01; requestAnimationFrame(function animateOctahedron() {y += speed; speed += gravity; if (y < -5) {speed *= -0.9;} octahedron.position.y = y; render(); requestAnimationFrame(animateOctahedron);});"
+
+      },
+      {
+        "id": "useful",
+        "text": "You look around the window for something useful. You notice a loose brick on the wall below the window. You pull it out and find a small metal key hidden behind it.",
+        "choices": [
+            {
+              "text": "Use the key on the door.",
+              "nextScene": "end"
+            },
+            {
+              "text": "Put the key back.",
+              "nextScene": "window"
+            }
+          ],
+          "animationCode": "var geometry = new THREE.TetrahedronGeometry(4); var material = new THREE.MeshBasicMaterial({color: 0xffffff}); var pyramid = new THREE.Mesh(geometry, material); ascene.add(pyramid); pyramid.position.set(0, 0, 0); requestAnimationFrame(function animatePyramid() {material.color.setHex(Math.random() * 0xffffff); render(); requestAnimationFrame(animatePyramid);});"
+
+        },
+        {
+          "id": "shout",
+          "text": "You shout for help as loud as you can. You hear a faint echo, but no one answers. You feel hopeless.",
+          "choices": [
+            {
+              "text": "Stop shouting.",
+              "nextScene": "window"
+            },
+            {
+              "text": "Keep shouting.",
+              "nextScene": "shout"
+            }
+          ],
+          "animationCode": "var geometry = new THREE.RingGeometry(2, 4, 32); var material = new THREE.MeshBasicMaterial({color: 0xff0000}); var ring = new THREE.Mesh(geometry, material); ascene.add(ring); ring.position.set(0, 0, 0); var opacity = 1; var direction = -1; requestAnimationFrame(function animateRing() {opacity += 0.01 * direction; if (opacity > 1 || opacity < 0) {direction *= -1;} material.opacity = opacity; render(); requestAnimationFrame(animateRing);});"
+        },
+        {
+          "id": "search",
+          "text": "You keep searching through the straw, hoping to find something useful. You find nothing but dust and dirt. You sneeze again.",
+          "choices": [
+            {
+              "text": "Keep searching.",
+              "nextScene": "search"
+            },
+            {
+              "text": "Give up.",
+              "nextScene": "giveup"
+            },
+            {
+              "text": "Go back to the cell.",
+              "nextScene": "start"
+            }
+          ],
+          "animationCode": "var geometry = new THREE.DodecahedronGeometry(3); var material = new THREE.MeshBasicMaterial({color: 0x800080}); var dodecahedron = new THREE.Mesh(geometry, material); ascene.add(dodecahedron); dodecahedron.position.set(5, 5, -5); var angle = Math.PI /2; requestAnimationFrame(function animateDodecahedron() {angle += Math.PI /180; dodecahedron.position.x = Math.cos(angle) *5; dodecahedron.position.y= Math.sin(angle) *5; render(); requestAnimationFrame(animateDodecahedron);});"
+
+        },
+        {
+          "id": "giveup",
+          "text": "You give up on searching through the straw. You realize that there is no hope of escaping this dungeon. You curl up in the corner and cry.",
+          "choices": [
+            {
+              "text": "The end.",
+              "nextScene": null
+            }
+          ],
+          "animationCode": "var geometry = new THREE.TorusKnotGeometry(3.5 , .8 ,100 ,16 ); var material = new THREE.MeshBasicMaterial({color: 'orange'} ); var torusKnot= new THREE.Mesh(geometry ,material ); ascene.add(torusKnot ); torusKnot .position.set (2 ,2 ,-2 ); requestAnimationFrame(function animateTorusKnot () {torusKnot .rotation.x += .01 ; render (); requestAnimationFrame (animateTorusKnot ); }); "
+
+        },
+        {
+          "id": "decipher",
+          "text": "You try to decipher the pattern on the wall. You notice that it consists of four symbols: a circle, a triangle, a square and a star. They are arranged in a certain order that seems to match the lock on the door.",
+          "choices": [
+            {
+              "text": "Enter the pattern on the lock.",
+              "nextScene": "end"
+            },
+            {
+             
+    
+    "text": "Ignore it.",
+              "nextScene": "door"
+            }
+          ],
+          "animationCode": "var geometry= new THREE.BoxGeometry (4 ,4 ,4 ); var material= new THREE.MeshBasicMaterial ({color: 'brown'} ); var box= new THREE.Mesh (geometry ,material ); ascene.add (box ); box.position.set (-2 ,-2 ,2 ); var size=1 ; var direction=1 ; requestAnimationFrame(function animateBox () {size+= .01 *direction ; if (size>2 || size< .5 ) {direction*= -1 ;} box.scale.set (size ,size ,size ); render (); requestAnimationFrame (animateBox ); }); "
+
+        },
+        {
+          "id": "end",
+          "text": "You enter the correct combination on the lock and open the door. You see a corridor leading to freedom. You run as fast as you can and escape from the dungeon.",
+          "choices": [
+            {
+              "text": "You win.",
+              "nextScene": null
+            }
+          ],
+          "animationCode": "var geometry = new THREE.DodecahedronGeometry(3); var material = new THREE.MeshBasicMaterial({color: 0x800080}); var dodecahedron = new THREE.Mesh(geometry, material); ascene.add(dodecahedron); dodecahedron.position.set(5, 5, -5); var angle = Math.PI /2; requestAnimationFrame(function animateDodecahedron() {angle += Math.PI /180; dodecahedron.position.x = Math.cos(angle) *5; dodecahedron.position.y= Math.sin(angle) *5; render(); requestAnimationFrame(animateDodecahedron);});"
+
+        }
+      ]
+    }
+    
