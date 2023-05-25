@@ -45,46 +45,46 @@
     },
     "required": ["settings", "scenes"],
     "$defs":{
-      scene: {
-        description: 'A scene of the game.',
-        type: 'object',
-        properties: {
-          id: {
-            description: 'The unique identifier of the scene.',
-            type: 'string'
+      "scene": {
+        "description": "A scene of the game.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The unique identifier of the scene.",
+            "type": "string"
           },
-          text: {
-            description: 'The text to display for the scene.',
-            type: 'string'
+          "text": {
+            "description": "The text to display for the scene.",
+            "type": "string"
           },
-          choices: {
-            description: 'The choices to display for the scene.',
-            type: 'array',
-            items: {
-              $ref: '#/definitions/choice'
+          "choices": {
+            "description": "The choices to display for the scene.",
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/choice"
             }
           },
-          animationCode: {
-            description: 'The animation code to run for the scene using Three.js.',
-            type: 'string'
+          "animationCode": {
+            "description": "The animation code to run for the scene using Three.js.",
+            "type": "string"
           }
         },
-        required: ['id', 'text', 'choices', 'animationCode']
+        "required": ["id", "text", "choices", "animationCode"]
       },
-      choice: {
-        description: 'A choice for a scene.',
-        type: 'object',
-        properties: {
-          text: {
-            description: 'The text to display for the choice.',
-            type: 'string'
+      "choice": {
+        "description": "A choice for a scene.",
+        "type": "object",
+        "properties": {
+          "text": {
+            "description": "The text to display for the choice.",
+            "type": "string"
           },
-          nextScene: {
-            description: 'The id of the next scene to go to after choosing this choice.',
-            type: 'string'
+          "nextScene": {
+            "description": "The id of the next scene to go to after choosing this choice.",
+            "type": "string"
           }
         },
-        required: ['text', 'nextScene']
+        "required": ["text", "nextScene"]
       }
     }
   }
